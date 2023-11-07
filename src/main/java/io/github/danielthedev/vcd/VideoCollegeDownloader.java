@@ -20,7 +20,6 @@ public class VideoCollegeDownloader implements DownloadListener {
 	
     public static void main( String[] args ) throws InterruptedException, URISyntaxException, IOException, ExecutionException
     {
-    	
     	VideoCollegeDownloader cvd = new VideoCollegeDownloader();     
     	cvd.start();
     }
@@ -59,7 +58,6 @@ public class VideoCollegeDownloader implements DownloadListener {
 	public void loadLibraries() {
 		File file = new File("ffmpeg.exe");
 		if (!file.exists()) {
-			
 			try (InputStream in = VideoCollegeDownloader.class.getClassLoader().getResourceAsStream(file.getName())) {
 				try (OutputStream out = new FileOutputStream(file)) {
 					byte[] buffer = new byte[1024];

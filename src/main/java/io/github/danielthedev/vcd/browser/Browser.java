@@ -73,6 +73,7 @@ public class Browser {
 	        	Thread.sleep(250);
 	        }
 		} catch(NoSuchWindowException e) {
+			this.closeWebsite();
 			System.exit(0);
 		} finally {
 			this.closeWebsite();

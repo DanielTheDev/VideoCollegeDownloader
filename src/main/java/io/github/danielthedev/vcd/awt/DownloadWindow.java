@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,7 +78,14 @@ public class DownloadWindow extends JFrame {
 
     public DownloadWindow() {
     	super("VideoCollege Downloader");
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+            	synchronized(Browser.LOCK) {
+            		Browser.LOCK.notify();
+        		}
+            }
+        });
         this.setBackground(new Color(255, 255, 255));
         this.setMinimumSize(new Dimension(1280, 720));
         this.setPreferredSize(new Dimension(1280, 720));
